@@ -5,15 +5,8 @@ const { createPortfolioSchema, updatePortfolioSchema } = require("../validator/p
 
 // Create Portfolio مع رفع صورة
 const createPortfolio = asyncHandler(async (req, res) => {
-  console.log("Create Portfolio Attempted");
-  console.log("Body:", req.body);
-  console.log("File:", req.file);
-
   const { error } = createPortfolioSchema.validate(req.body);
-  if (error) {
-    console.log("Validation Error:", error.details[0].message);
-    throw new AppError(error.details[0].message, 400);
-  }
+  if (error) throw new AppError(error.details[0].message, 400);
 
   if (!req.file) throw new AppError("Image is required", 400); 
 
