@@ -16,4 +16,4 @@ const portfolioSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model("Portfolio", portfolioSchema);
+module.exports = mongoose.models.Portfolio || mongoose.model("Portfolio", portfolioSchema);

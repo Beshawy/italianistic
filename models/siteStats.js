@@ -6,4 +6,4 @@ const siteStatsSchema = new mongoose.Schema({
   lastVisit: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model("SiteStats", siteStatsSchema);
+module.exports = mongoose.models.SiteStats || mongoose.model("SiteStats", siteStatsSchema);
