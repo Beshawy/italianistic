@@ -8,7 +8,6 @@ const statsRoute = require("./routes/statsRoute");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 const mongoSanitize = require("express-mongo-sanitize");
-const xss = require("xss-clean");
 const compression = require("compression");
 const hpp = require("hpp");
 
