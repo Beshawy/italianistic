@@ -15,6 +15,9 @@ const hpp = require("hpp");
 
 
 
+// Connect to Database
+connectDB();
+
 const app = express();
 
 app.use(cors());
@@ -56,7 +59,10 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 4000;
 
-app.listen(PORT, async () => {
-  await connectDB();
-  console.log(`Server running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
+
+module.exports = app;
