@@ -3,7 +3,7 @@ const Portfolio = require("../models/portfolio");
 const AppError = require("../utils/AppError");
 const { createPortfolioSchema, updatePortfolioSchema } = require("../validator/portfolioValidator");
 
-// Create Portfolio مع رفع صورة
+
 const createPortfolio = asyncHandler(async (req, res) => {
   const { error } = createPortfolioSchema.validate(req.body);
   if (error) throw new AppError(error.details[0].message, 400);

@@ -15,16 +15,22 @@ const hpp = require("hpp");
 
 
 
-// Connect to Database
-connectDB();
-
 const app = express();
+
+// Middleware to ensure DB connection
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
 
 app.use(cors());
 app.use(express.json());
 app.use(helmet());
 app.use(mongoSanitize());
-app.use(xss());
 app.use(compression());
 app.use(hpp());
 
